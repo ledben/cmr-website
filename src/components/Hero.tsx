@@ -13,17 +13,18 @@ const Hero = () => {
         </div>
       </div>
 
+      <div className={styles.logoWrapper}>
+        <Image
+          src="/logo.png"
+          alt="Dress'in - Comptoir de la Mode Responsable"
+          width={600}
+          height={200}
+          priority
+          className={styles.logo}
+        />
+      </div>
+
       <div className={`container ${styles.content}`}>
-        <div className={styles.logoWrapper}>
-          <Image
-            src="/logo.png"
-            alt="Dress'in - Comptoir de la Mode Responsable"
-            width={600}
-            height={200}
-            priority
-            className={styles.logo}
-          />
-        </div>
 
         <h1 className={styles.title}>
           Dépôt-vente de mode
