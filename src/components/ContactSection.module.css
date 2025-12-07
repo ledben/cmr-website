@@ -1,0 +1,98 @@
+.contact {
+  background: var(--white);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--space-3xl);
+  align-items: start;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.infoCard {
+  background: var(--off-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  transition: all var(--transition-base);
+}
+
+.infoCard:hover {
+  background: var(--primary-light);
+  transform: translateX(8px);
+}
+
+.infoCard h3 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin-bottom: var(--space-md);
+}
+
+.infoCard h3 svg {
+  color: var(--primary);
+}
+
+.infoCard p {
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contactValue {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--gray-800);
+  display: block;
+}
+
+.contactValue:hover {
+  color: var(--primary);
+}
+
+.link {
+  display: inline-block;
+  margin-top: var(--space-sm);
+  font-weight: 500;
+  color: var(--primary-dark);
+  font-size: 0.9rem;
+}
+
+.link:hover {
+  color: var(--primary);
+}
+
+.mapWrapper {
+  position: sticky;
+  top: 120px;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+  
+  .mapWrapper {
+    position: relative;
+    top: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .infoCard {
+    padding: var(--space-lg);
+  }
+  
+  .infoCard:hover {
+    transform: none;
+  }
+}

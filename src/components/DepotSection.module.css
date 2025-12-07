@@ -1,0 +1,104 @@
+.depot {
+  position: relative;
+}
+
+.intro {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto var(--space-3xl);
+}
+
+.intro p {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  color: var(--gray-700);
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xl);
+  margin-bottom: var(--space-3xl);
+}
+
+.step {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+}
+
+.step:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.stepNumber {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  background: var(--primary);
+  color: var(--white);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.stepIcon {
+  width: 70px;
+  height: 70px;
+  background: var(--primary-light);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: var(--space-md) auto var(--space-lg);
+  color: var(--primary-dark);
+  transition: all var(--transition-base);
+}
+
+.step:hover .stepIcon {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.step h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-sm);
+  color: var(--gray-800);
+}
+
+.step p {
+  color: var(--gray-600);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.cta {
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .stepsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .stepsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .step {
+    padding: var(--space-xl);
+  }
+}

@@ -1,0 +1,237 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 120px;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--off-white) 0%, var(--primary-light) 100%);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 70%, rgba(139, 195, 74, 0.1) 0%, transparent 50%);
+}
+
+.shapes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.shape1,
+.shape2,
+.shape3 {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--primary);
+  opacity: 0.05;
+}
+
+.shape1 {
+  width: 600px;
+  height: 600px;
+  top: -200px;
+  right: -200px;
+  animation: float 20s ease-in-out infinite;
+}
+
+.shape2 {
+  width: 400px;
+  height: 400px;
+  bottom: -100px;
+  left: -100px;
+  animation: float 15s ease-in-out infinite reverse;
+}
+
+.shape3 {
+  width: 200px;
+  height: 200px;
+  top: 40%;
+  left: 20%;
+  animation: float 10s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, -30px) scale(1.05);
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 900px;
+}
+
+.logoWrapper {
+  margin-bottom: var(--space-2xl);
+  animation: fadeIn 0.8s ease-out;
+}
+
+.logo {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--gray-800);
+  margin-bottom: var(--space-lg);
+  animation: fadeIn 0.8s ease-out 0.2s backwards;
+}
+
+.highlight {
+  display: block;
+  color: var(--primary);
+  font-style: italic;
+}
+
+.subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--gray-600);
+  margin-bottom: var(--space-2xl);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeIn 0.8s ease-out 0.4s backwards;
+}
+
+.cta {
+  display: flex;
+  gap: var(--space-lg);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-3xl);
+  animation: fadeIn 0.8s ease-out 0.6s backwards;
+}
+
+.features {
+  display: flex;
+  gap: var(--space-2xl);
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: fadeIn 0.8s ease-out 0.8s backwards;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--gray-600);
+  font-weight: 500;
+}
+
+.featureIcon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  color: var(--primary);
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--gray-500);
+  font-size: 0.875rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.mouse {
+  width: 24px;
+  height: 40px;
+  border: 2px solid var(--gray-400);
+  border-radius: 12px;
+  position: relative;
+}
+
+.wheel {
+  width: 4px;
+  height: 8px;
+  background: var(--primary);
+  border-radius: 2px;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scroll 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+@keyframes scroll {
+  0%, 100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(12px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 100px;
+    min-height: calc(100vh - 60px);
+  }
+  
+  .logoWrapper {
+    margin-bottom: var(--space-xl);
+  }
+  
+  .logo {
+    max-width: 300px;
+  }
+  
+  .cta {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .cta .btn {
+    width: 100%;
+  }
+  
+  .features {
+    gap: var(--space-lg);
+  }
+  
+  .feature span {
+    display: none;
+  }
+  
+  .scrollIndicator {
+    display: none;
+  }
+}

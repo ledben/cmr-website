@@ -1,0 +1,117 @@
+.carouselSection {
+  overflow: hidden;
+}
+
+.description {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: var(--space-3xl);
+  opacity: 0.95;
+}
+
+.carouselWrapper {
+  margin: 0 -20px;
+  padding: var(--space-lg) 0;
+}
+
+.carousel {
+  width: 100%;
+}
+
+.slide {
+  padding: 0 var(--space-md);
+}
+
+.imageContainer {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background: rgba(255, 255, 255, 0.1);
+  aspect-ratio: 3/4;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+  color: rgba(255,255,255,0.8);
+}
+
+.placeholder svg {
+  opacity: 0.6;
+}
+
+.placeholder span {
+  font-size: 0.875rem;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.socialCta {
+  text-align: center;
+  margin-top: var(--space-3xl);
+}
+
+.socialCta p {
+  margin-bottom: var(--space-lg);
+  font-size: 1.1rem;
+}
+
+.socialLinks {
+  display: flex;
+  gap: var(--space-lg);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  color: var(--white);
+  font-weight: 600;
+  transition: all var(--transition-base);
+  backdrop-filter: blur(10px);
+}
+
+.socialLink:hover {
+  background: var(--white);
+  color: var(--primary-dark);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 1024px) {
+  .carousel :global(.carousel.carousel-slider .control-arrow) {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .description {
+    font-size: 1rem;
+    padding: 0 var(--space-md);
+  }
+  
+  .carouselWrapper {
+    margin: 0;
+  }
+  
+  .slide {
+    padding: 0 var(--space-sm);
+  }
+}
