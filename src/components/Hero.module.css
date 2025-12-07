@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 120px;
+  padding-top: 160px;
   overflow: hidden;
 }
 
@@ -76,19 +76,21 @@
   max-width: 900px;
 }
 
+
+
 .logoWrapper {
-  margin: 0 auto var(--space-2xl);
-  animation: fadeIn 0.8s ease-out;
-  width: 80vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin-top: var(--space-3xl);
+  margin-bottom: var(--space-4xl);
+  animation: fadeIn 0.8s ease-out backwards;
 }
 
 .logo {
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+  object-fit: contain;
 }
 
 .title {
