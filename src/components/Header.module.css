@@ -10,7 +10,7 @@
 .topBar {
   background: var(--gray-800);
   color: var(--white);
-  padding: var(--space-xs) 0;
+  padding: 4px 0;
   font-size: 0.875rem;
 }
 
@@ -50,13 +50,13 @@
 
 .nav {
   background: var(--white);
-  padding: var(--space-sm) 0;
+  padding: var(--space-xs) 0;
   box-shadow: var(--shadow-sm);
   transition: var(--transition-base);
 }
 
 .header.scrolled .nav {
-  padding: var(--space-xs) 0;
+  padding: 4px 0;
   box-shadow: var(--shadow-md);
 }
 

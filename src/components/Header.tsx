@@ -77,8 +77,8 @@ const Header = () => {
               <Image
                 src="/logo.png"
                 alt="Dress'in - Comptoir de la Mode Responsable"
-                width={180}
-                height={60}
+                width={150}
+                height={50}
                 priority
               />
             </a>
