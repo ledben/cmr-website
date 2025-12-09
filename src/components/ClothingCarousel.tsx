@@ -1,13 +1,15 @@
 'use client';
 
+import Image from 'next/image';
+
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import styles from './ClothingCarousel.module.css';
 
 const ClothingCarousel = () => {
-  // Generate array of 30 image paths (will use placeholder images)
-  const images = Array.from({ length: 30 }, (_, i) => ({
-    src: `/images/photo-${i + 1}.jpeg`,
+  // Generate array of 38 image paths
+  const images = Array.from({ length: 38 }, (_, i) => ({
+    src: `/images/${i + 1}.jpg`,
     alt: `Composition vestimentaire ${i + 1}`
   }));
 
@@ -42,14 +44,13 @@ const ClothingCarousel = () => {
               <div key={index} className={styles.slide}>
                 <div className={styles.imageContainer}>
                   {/* Placeholder SVG when images don't exist */}
-                  <div className={styles.placeholder}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
-                      <path d="M18.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
-                      <path d="M3.5 22V8l4-2 5 4 5-4 4 2v14" />
-                    </svg>
-                    <span>Photo {index + 1}</span>
-                  </div>
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    style={{ objectFit: 'cover' }}
+                  />
                 </div>
               </div>
             ))}

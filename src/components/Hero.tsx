@@ -73,13 +73,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
-      <div className={styles.scrollIndicator}>
-        <div className={styles.mouse}>
-          <div className={styles.wheel}></div>
-        </div>
-        <span>Découvrir</span>
-      </div>
     </section>
   );
 };
