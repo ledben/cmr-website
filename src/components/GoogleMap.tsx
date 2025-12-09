@@ -16,12 +16,7 @@ const center = {
 };
 
 const GoogleMapSection = () => {
-  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || '';
-  const [hasValidKey, setHasValidKey] = useState(false);
-
-  useEffect(() => {
-    setHasValidKey(apiKey !== '' && apiKey !== 'YOUR_API_KEY_HERE');
-  }, [apiKey]);
+  const apiKey = 'AIzaSyBUu9C_oPXP_9SuIeJqhiCpeHiCEHUFt-E';
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: apiKey,
@@ -34,7 +29,7 @@ const GoogleMapSection = () => {
   };
 
   const renderMap = () => {
-    if (!hasValidKey || loadError) {
+    if (loadError) {
       return (
         <div className={styles.placeholder}>
           <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">

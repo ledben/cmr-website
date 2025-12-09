@@ -4,15 +4,19 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-3xl);
   align-items: start;
 }
 
-.info {
+.infoColumn {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: var(--space-3xl);
+}
+
+.hoursColumn {
+  width: 100%;
 }
 
 .infoCard {

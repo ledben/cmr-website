@@ -11,7 +11,7 @@ const ContactSection = () => {
         </div>
 
         <div className={styles.grid}>
-          <div className={styles.info}>
+          <div className={styles.infoColumn}>
             <div className={styles.infoCard}>
               <h3>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -58,12 +58,10 @@ const ContactSection = () => {
                 nathalie@dressin-cestas.com
               </a>
             </div>
-
-            <OpeningHours />
           </div>
 
-          <div className={styles.mapWrapper}>
-            <GoogleMapSection />
+          <div className={styles.hoursColumn}>
+            <OpeningHours />
           </div>
         </div>
       </div>
