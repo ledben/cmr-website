@@ -1,22 +1,22 @@
 :root {
-  /* Primary Colors - Light Green Theme */
-  --primary: #8BC34A;
-  --primary-dark: #689F38;
-  --primary-light: #DCEDC8;
-  --primary-gradient: linear-gradient(135deg, #8BC34A 0%, #689F38 100%);
+  /* Primary Colors - Refined Blue Theme */
+  --primary: #2C5282;
+  --primary-dark: #1A365D;
+  --primary-light: #EBF8FF;
+  --primary-gradient: linear-gradient(135deg, #2C5282 0%, #172B4D 100%);
   
   /* Neutral Colors */
   --white: #FFFFFF;
-  --off-white: #F9FBF7;
-  --gray-100: #F5F7F3;
-  --gray-200: #E8ECE5;
-  --gray-300: #C5CCC0;
-  --gray-400: #9AA394;
-  --gray-500: #6B7566;
-  --gray-600: #4A5245;
-  --gray-700: #333A2F;
-  --gray-800: #1F241B;
-  --black: #0F120D;
+  --off-white: #F8FAFC;
+  --gray-100: #F1F5F9;
+  --gray-200: #E2E8F0;
+  --gray-300: #CBD5E1;
+  --gray-400: #94A3B8;
+  --gray-500: #64748B;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1E293B;
+  --black: #0F172A;
   
   /* Accent Colors */
   --accent: #FFB74D;
@@ -153,6 +153,15 @@ button {
 
 .section-primary {
   background: var(--primary-gradient);
+  color: var(--white);
+}
+
+.section-primary h1,
+.section-primary h2,
+.section-primary h3,
+.section-primary h4,
+.section-primary h5,
+.section-primary h6 {
   color: var(--white);
 }
 
@@ -415,7 +424,7 @@ button {
 }
 
 .carousel .control-arrow {
-  background: rgba(139, 195, 74, 0.8) !important;
+  background: rgba(44, 82, 130, 0.8) !important;
   border-radius: var(--radius-full);
   width: 50px;
   height: 50px;

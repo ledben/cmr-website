@@ -27,8 +27,9 @@ const ClothingCarousel = () => {
         <div className={styles.carouselWrapper}>
           <Carousel
             showArrows={true}
-            showThumbs={false}
-            showStatus={false}
+            showThumbs={true}
+            showStatus={true}
+            showIndicators={false}
             infiniteLoop={true}
             autoPlay={true}
             interval={4000}
