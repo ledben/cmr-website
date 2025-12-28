@@ -29,7 +29,7 @@ const ClothingCarousel = () => {
             showArrows={true}
             showThumbs={true}
             showStatus={true}
-            showIndicators={false}
+            showIndicators={true}
             infiniteLoop={true}
             autoPlay={true}
             interval={4000}
