@@ -13,7 +13,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-xl);
+  gap: var(--space-lg);
 }
 
 .card {
@@ -28,7 +28,7 @@
 
 .card:hover,
 .card.active {
-  transform: translateY(-8px);
+  transform: translateY(-8px) rotate(calc(var(--fun-rotation) * 0.5));
   box-shadow: var(--shadow-xl);
   border-color: var(--primary-light);
 }

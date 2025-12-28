@@ -39,7 +39,11 @@
   --space-xl: 2rem;
   --space-2xl: 3rem;
   --space-3xl: 4rem;
-  --space-4xl: 6rem;
+  --space-4xl: 4rem; /* Dense */
+  
+  /* Decorative */
+  --fun-gradient: linear-gradient(135deg, #2C5282 0%, #4299E1 100%);
+  --fun-rotation: 2deg;
   
   /* Border Radius */
   --radius-sm: 4px;
@@ -144,7 +148,7 @@ button {
 
 /* Section */
 .section {
-  padding: var(--space-4xl) 0;
+  padding: var(--space-3xl) 0;
 }
 
 .section-alt {
@@ -213,7 +217,7 @@ button {
 
 .btn-primary:hover {
   background: var(--primary-dark);
-  transform: translateY(-2px);
+  transform: translateY(-2px) rotate(var(--fun-rotation));
   box-shadow: var(--shadow-lg);
   color: var(--white);
 }
@@ -227,6 +231,7 @@ button {
 .btn-outline:hover {
   background: var(--primary);
   color: var(--white);
+  transform: translateY(-2px) rotate(calc(var(--fun-rotation) * -1));
 }
 
 .btn-white {

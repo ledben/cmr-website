@@ -16,8 +16,8 @@
 .stepsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-xl);
-  margin-bottom: var(--space-3xl);
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
 }
 
 .step {
@@ -39,7 +39,7 @@
   position: absolute;
   top: -15px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) rotate(10deg);
   width: 36px;
   height: 36px;
   background: var(--primary);
@@ -50,6 +50,7 @@
   justify-content: center;
   font-weight: 700;
   font-size: 0.875rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .stepIcon {

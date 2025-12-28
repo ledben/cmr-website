@@ -17,7 +17,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-xl);
+  gap: var(--space-lg);
 }
 
 .featureCard {
@@ -32,7 +32,7 @@
 .featureCard:hover {
   background: var(--white);
   border-color: var(--primary-light);
-  transform: translateY(-8px);
+  transform: translateY(-8px) rotate(calc(var(--fun-rotation) * -0.5));
   box-shadow: var(--shadow-lg);
 }
 

@@ -10,7 +10,7 @@
   align-items: center;
   gap: var(--space-sm);
   font-size: 1.25rem;
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-lg);
   color: var(--gray-800);
 }
 
