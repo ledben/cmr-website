@@ -16,9 +16,9 @@ const Hero = () => {
       <div className={styles.logoWrapper}>
         <Image
           src="/logo.png"
-          alt="Logo CMR"
-          width={1000}
-          height={1000}
+          alt="Logo Dress'in"
+          width={800}
+          height={300}
           priority
           className={styles.logo}
         />

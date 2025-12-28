@@ -81,8 +81,8 @@
 .logoWrapper {
   position: relative;
   width: 100%;
-  max-width: 1000px;
-  margin-top: var(--space-3xl);
+  max-width: 800px;
+  margin-top: var(--space-4xl);
   margin-bottom: var(--space-4xl);
   animation: fadeIn 0.8s ease-out backwards;
 }
