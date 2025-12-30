@@ -69,11 +69,18 @@
 .logo {
   display: flex;
   align-items: center;
+  transition: all var(--transition-base);
 }
 
 .logo img {
   height: auto;
   transition: var(--transition-base);
+}
+
+.logo.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
 }
 
 .header.scrolled .logo img {

@@ -6,15 +6,22 @@ import styles from './Header.module.css';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showLogo, setShowLogo] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const scrolled = window.scrollY > 50;
+      setIsScrolled(scrolled);
+      setShowLogo(scrolled); // Show logo when scrolled > 50px
     };
 
+    handleScroll(); // Initial check
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const toggleMobileMenu = () => {
@@ -73,7 +80,7 @@ const Header = () => {
       <nav className={styles.nav}>
         <div className="container">
           <div className={styles.navContent}>
-            <a href="#accueil" className={styles.logo}>
+            <a href="#accueil" className={`${styles.logo} ${!showLogo ? styles.hidden : ''}`}>
               <Image
                 src="/logo.png"
                 alt="Dress'in - Comptoir de la Mode Responsable"
