@@ -1,5 +1,6 @@
 # Stage 1: Dependencies
 FROM node:22-alpine AS deps
+RUN npm install -g npm@11.7.0
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
@@ -9,6 +10,7 @@ RUN npm ci
 
 # Stage 2: Builder
 FROM node:22-alpine AS builder
+RUN npm install -g npm@11.7.0
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
