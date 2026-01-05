@@ -5,14 +5,14 @@ const Hero = () => {
   return (
     <section id="accueil" className={styles.hero}>
       <div className={styles.background}>
+        <Image
+          src="/boutique.jpg"
+          alt="Boutique Dress'in"
+          fill
+          priority
+          className={styles.backgroundImage}
+        />
         <div className={styles.overlay}></div>
-        <div className={styles.shapes}>
-          <div className={styles.shape1}></div>
-          <div className={styles.shape2}></div>
-          <div className={styles.shape3}></div>
-          <div className={styles.shape4}></div>
-          <div className={styles.shape5}></div>
-        </div>
       </div>
 
       <div className={styles.logoWrapper}>
@@ -27,15 +27,6 @@ const Hero = () => {
       </div>
 
       <div className={`container ${styles.content}`}>
-
-        <h1 className={styles.title}>
-          Dépôt-vente de mode
-          <span className={styles.highlight}>responsable</span>
-        </h1>
-
-        <p className={styles.subtitle}>
-          Vêtements, chaussures et accessoires chics et tendance à Cestas, près de Bordeaux
-        </p>
 
         <div className={styles.cta}>
           <a href="#apropos" className="btn btn-primary">
