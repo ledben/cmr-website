@@ -7,30 +7,30 @@ const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
-      name: 'Nina',
-      date: 'Juin 2023',
-      text: "Superbe boutique de dépôt vente ! Très bon rapport qualité prix ! Accueil au top de la Gérante, qui n'hésite pas à vous conseiller et vous donner son avis !",
+      name: 'Bénédicte',
+      date: 'Décembre 2025',
+      text: "Venue pour découvrir la boutique sur la commune et pas déçue. De très belles pièces, une boutique agréable et rangée et le personnel très agréable.",
       rating: 5
     },
     {
       id: 2,
-      name: 'Marie',
-      date: 'Mai 2023',
-      text: "Je recommande vivement cette boutique pour la diversité des pièces vendues et la qualité de la sélection faite par Nathalie qui est par ailleurs de très bon conseil. Elle sait parfaitement identifier le style et les goûts de ses clientes. C'est un plaisir de m'y rendre à chaque fois.",
+      name: 'Sophie',
+      date: 'Octobre 2025',
+      text: "C’est toujours un plaisir de venir chez Dress’in, boutique de vêtements seconde main de qualité. On y trouve de belles marques et les vêtements sont sélectionnés avec exigence.",
       rating: 5
     },
     {
       id: 3,
-      name: 'Marion',
-      date: 'Mai 2023',
-      text: "Super démarche éco responsable. Permet de donner une nouvelle vie aux vêtements. J'ai découvert ce magasin il y a quelques mois et je recommande vivement. Style de vêtements variés et à la mode (hommes, femmes, enfants). Nathalie a beaucoup de goût dans l'exposition de ses vêtements et elle est aussi très agréable.",
+      name: 'Christèle',
+      date: 'Mai 2025',
+      text: "Nathalie a le sens de la mode et sait dénicher pour ses clients de véritables petites pépites vendues à un prix très raisonnable. Toujours de bonne humeur et de bon conseil, Nathalie prête une attention personnalisée à toute personne qui franchit la porte de sa boutique pour la première comme pour la centième fois. De la couleur, de la qualité, des marques, de la diversité, des petits prix, de la bonne humeur sont autant de marques de fabrique de cette boutique. Je m'habille quasi exclusivement chez Dress'in et je recommande très vivement l'endroit !",
       rating: 5
     },
     {
       id: 4,
-      name: 'Nelly et Matt',
-      date: 'Visité en octobre',
-      text: "Belle boutique avec accueil super sympa par Nathalie! Je vous recommande, il y en a pour tous les gouts et c'est écoresponsable. 1ère visite et déjà deux trouvailles ! merci",
+      name: 'Michèle',
+      date: 'Mars 2025',
+      text: "Joli magasin où l'on trouve de très beaux vêtements et le plus une super ambiance ! Il faut y aller,on passe un très bon moment et on ne repart jamais les mains vides!👍",
       rating: 5
     }
   ];
@@ -65,7 +65,7 @@ const Testimonials = () => {
         </div>
 
         <p className={styles.subtitle}>
-          Ils ont adopté une démarche écolo-chic :
+          Elles ont adopté une démarche écolo-chic :
         </p>
 
         <div className={styles.grid}>
