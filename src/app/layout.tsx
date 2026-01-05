@@ -80,8 +80,8 @@ export const metadata: Metadata = {
     canonical: 'https://www.dressin-cestas.com',
   },
   icons: {
-    icon: '/favicon-logo.png',
-    apple: '/favicon-logo.png',
+    icon: '/logo-d.svg',
+    apple: '/logo-d.svg',
   },
 };
 
