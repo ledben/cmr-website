@@ -8,10 +8,9 @@
 }
 
 .topBar {
-  background: var(--gray-800);
-  color: var(--white);
   padding: 4px 0;
   font-size: 0.875rem;
+  transition: all var(--transition-base);
 }
 
 .topBarContent {
@@ -49,15 +48,12 @@
 }
 
 .nav {
-  background: var(--white);
   padding: var(--space-xs) 0;
-  box-shadow: var(--shadow-sm);
   transition: var(--transition-base);
 }
 
 .header.scrolled .nav {
   padding: 4px 0;
-  box-shadow: var(--shadow-md);
 }
 
 .navContent {
@@ -79,8 +75,6 @@
 
 .logo.hidden {
   opacity: 0;
-  pointer-events: none;
-  transform: translateY(-10px);
 }
 
 .header.scrolled .logo img {
