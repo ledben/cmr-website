@@ -17,7 +17,7 @@
 }
 
 .card {
-  background: var(--white);
+  background: var(--primary-gradient);
   border-radius: var(--radius-lg);
   padding: var(--space-2xl);
   box-shadow: var(--shadow-md);
@@ -30,18 +30,18 @@
 .card.active {
   transform: translateY(-8px) rotate(calc(var(--fun-rotation) * 0.5));
   box-shadow: var(--shadow-xl);
-  border-color: var(--primary-light);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .quote {
-  color: var(--primary-light);
+  color: rgba(255, 255, 255, 0.1);
   margin-bottom: var(--space-md);
 }
 
 .text {
   font-size: 1rem;
   line-height: 1.8;
-  color: var(--gray-700);
+  color: rgba(255, 255, 255, 0.95);
   margin-bottom: var(--space-xl);
   font-style: italic;
 }
@@ -63,8 +63,8 @@
 .avatar {
   width: 48px;
   height: 48px;
-  background: var(--primary);
-  color: var(--white);
+  background: var(--white);
+  color: var(--primary-dark);
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
@@ -75,12 +75,12 @@
 
 .name {
   font-weight: 600;
-  color: var(--gray-800);
+  color: var(--white);
 }
 
 .date {
   font-size: 0.875rem;
-  color: var(--gray-500);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .rating {
