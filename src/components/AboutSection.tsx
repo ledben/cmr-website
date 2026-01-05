@@ -47,7 +47,7 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="apropos" className={`section ${styles.about}`}>
+    <section id="apropos" className={`section section-primary ${styles.about}`}>
       <div className="container">
         <div className="section-title">
           <h2>C&apos;est quoi, Dress&apos;in ?</h2>
