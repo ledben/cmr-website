@@ -1,17 +1,67 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
-
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import styles from './ClothingCarousel.module.css';
 
-const ClothingCarousel = () => {
+interface ImageItem {
+  src: string;
+  alt: string;
+}
+
+interface ClothingCarouselProps {
+  columns?: number;
+}
+
+const ClothingCarousel = ({ columns = 3 }: ClothingCarouselProps) => {
+  const [selectedImage, setSelectedImage] = useState<ImageItem | null>(null);
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
+
   // Generate array of 38 image paths
-  const images = Array.from({ length: 38 }, (_, i) => ({
+  const images: ImageItem[] = Array.from({ length: 38 }, (_, i) => ({
     src: `/images/${i + 1}.jpg`,
     alt: `Composition vestimentaire ${i + 1}`
   }));
+
+  const openLightbox = (image: ImageItem) => {
+    setSelectedImage(image);
+    setIsZoomed(false);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLightbox = () => {
+    setSelectedImage(null);
+    setIsZoomed(false);
+    document.body.style.overflow = 'auto';
+  };
+
+  const toggleZoom = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsZoomed(!isZoomed);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isZoomed) return;
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
+    setMousePos({ x, y });
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (!isZoomed) return;
+
+    const touch = e.touches[0];
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    const x = ((touch.clientX - left) / width) * 100;
+    const y = ((touch.clientY - top) / height) * 100;
+
+    setMousePos({
+      x: Math.max(0, Math.min(100, x)),
+      y: Math.max(0, Math.min(100, y))
+    });
+  };
 
   return (
     <section id="compositions" className={`section section-primary ${styles.carouselSection}`}>
@@ -24,38 +74,29 @@ const ClothingCarousel = () => {
           Nous postons régulièrement des compositions, issues de nos derniers arrivages, sur les réseaux sociaux.
         </p>
 
-        <div className={styles.carouselWrapper}>
-          <Carousel
-            showArrows={true}
-            showThumbs={true}
-            showStatus={true}
-            showIndicators={true}
-            infiniteLoop={true}
-            autoPlay={true}
-            interval={4000}
-            transitionTime={500}
-            centerMode={true}
-            centerSlidePercentage={33.33}
-            emulateTouch={true}
-            swipeable={true}
-            dynamicHeight={false}
-            className={styles.carousel}
+        <div className={styles.gridWrapper}>
+          <div
+            className={styles.grid}
+            style={{ '--grid-cols': columns } as React.CSSProperties}
           >
             {images.map((image, index) => (
-              <div key={index} className={styles.slide}>
+              <div
+                key={index}
+                className={styles.gridItem}
+                onClick={() => openLightbox(image)}
+              >
                 <div className={styles.imageContainer}>
-                  {/* Placeholder SVG when images don't exist */}
                   <Image
                     src={image.src}
                     alt={image.alt}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                     style={{ objectFit: 'cover' }}
                   />
                 </div>
               </div>
             ))}
-          </Carousel>
+          </div>
         </div>
 
         <div className={styles.socialCta}>
@@ -88,8 +129,39 @@ const ClothingCarousel = () => {
           </div>
         </div>
       </div>
+
+      {/* Lightbox Overlay */}
+      {selectedImage && (
+        <div className={styles.lightbox} onClick={closeLightbox}>
+          <button className={styles.closeButton} onClick={closeLightbox}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+          <div
+            className={`${styles.lightboxImageContainer} ${isZoomed ? styles.zoomed : ''}`}
+            onClick={toggleZoom}
+            onMouseMove={handleMouseMove}
+            onTouchMove={handleTouchMove}
+          >
+            <Image
+              src={selectedImage.src}
+              alt={selectedImage.alt}
+              fill
+              style={{
+                objectFit: 'contain',
+                transformOrigin: `${mousePos.x}% ${mousePos.y}%`
+              }}
+              sizes="90vw"
+              priority
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };
 
 export default ClothingCarousel;
+
