@@ -1,5 +1,5 @@
-import OpeningHours from './OpeningHours';
-import GoogleMapSection from './GoogleMap';
+import OpeningHours from '../OpeningHours';
+import GoogleMapSection from '../GoogleMap';
 import styles from './ContactSection.module.css';
 
 const ContactSection = () => {
