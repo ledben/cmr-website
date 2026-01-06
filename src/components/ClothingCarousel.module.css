@@ -14,7 +14,7 @@
   margin: 0 auto;
   padding: var(--space-lg) var(--space-md);
   max-width: 1800px;
-  width: 95%;
+  width: 100%;
 }
 
 .grid {
@@ -66,7 +66,7 @@
   align-items: center;
   justify-content: center;
   cursor: zoom-out;
-  padding: var(--space-xl);
+  padding: var(--space-md);
   animation: fadeIn 0.3s ease;
 }
 
@@ -74,8 +74,8 @@
   position: relative;
   width: auto;
   height: auto;
-  max-width: 90vw;
-  max-height: 90vh;
+  max-width: 95vw;
+  max-height: 95vh;
   aspect-ratio: var(--aspect-ratio);
   display: flex;
   align-items: center;
