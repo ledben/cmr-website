@@ -13,10 +13,11 @@ interface ClothingCarouselProps {
   columns?: number;
 }
 
-const ClothingCarousel = ({ columns = 3 }: ClothingCarouselProps) => {
+const ClothingCarousel = ({ columns = 5 }: ClothingCarouselProps) => {
   const [selectedImage, setSelectedImage] = useState<ImageItem | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
+  const [aspectRatio, setAspectRatio] = useState<number | null>(null);
 
   // Generate array of 38 image paths
   const images: ImageItem[] = Array.from({ length: 38 }, (_, i) => ({
@@ -27,18 +28,27 @@ const ClothingCarousel = ({ columns = 3 }: ClothingCarouselProps) => {
   const openLightbox = (image: ImageItem) => {
     setSelectedImage(image);
     setIsZoomed(false);
+    setAspectRatio(null);
     document.body.style.overflow = 'hidden';
   };
 
   const closeLightbox = () => {
     setSelectedImage(null);
     setIsZoomed(false);
+    setAspectRatio(null);
     document.body.style.overflow = 'auto';
   };
 
   const toggleZoom = (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsZoomed(!isZoomed);
+  };
+
+  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    const { naturalWidth, naturalHeight } = e.currentTarget;
+    if (naturalWidth && naturalHeight) {
+      setAspectRatio(naturalWidth / naturalHeight);
+    }
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -73,32 +83,34 @@ const ClothingCarousel = ({ columns = 3 }: ClothingCarouselProps) => {
         <p className={styles.description}>
           Nous postons régulièrement des compositions, issues de nos derniers arrivages, sur les réseaux sociaux.
         </p>
+      </div>
 
-        <div className={styles.gridWrapper}>
-          <div
-            className={styles.grid}
-            style={{ '--grid-cols': columns } as React.CSSProperties}
-          >
-            {images.map((image, index) => (
-              <div
-                key={index}
-                className={styles.gridItem}
-                onClick={() => openLightbox(image)}
-              >
-                <div className={styles.imageContainer}>
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    style={{ objectFit: 'cover' }}
-                  />
-                </div>
+      <div className={styles.gridWrapper}>
+        <div
+          className={styles.grid}
+          style={{ '--grid-cols': columns } as React.CSSProperties}
+        >
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className={styles.gridItem}
+              onClick={() => openLightbox(image)}
+            >
+              <div className={styles.imageContainer}>
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  style={{ objectFit: 'cover' }}
+                />
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
+      </div>
 
+      <div className="container">
         <div className={styles.socialCta}>
           <p>Retrouvez toutes nos compositions sur</p>
           <div className={styles.socialLinks}>
@@ -144,11 +156,15 @@ const ClothingCarousel = ({ columns = 3 }: ClothingCarouselProps) => {
             onClick={toggleZoom}
             onMouseMove={handleMouseMove}
             onTouchMove={handleTouchMove}
+            style={{
+              '--aspect-ratio': aspectRatio || 'auto'
+            } as React.CSSProperties}
           >
             <Image
               src={selectedImage.src}
               alt={selectedImage.alt}
               fill
+              onLoad={handleImageLoad}
               style={{
                 objectFit: 'contain',
                 transformOrigin: `${mousePos.x}% ${mousePos.y}%`
