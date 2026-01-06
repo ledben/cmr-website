@@ -16,7 +16,6 @@ interface ArticleGridProps {
 const ArticleGrid = ({ columns = 5 }: ArticleGridProps) => {
   const [selectedImage, setSelectedImage] = useState<ImageItem | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const [aspectRatio, setAspectRatio] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
@@ -114,10 +113,6 @@ const ArticleGrid = ({ columns = 5 }: ArticleGridProps) => {
         <div className="section-title">
           <h2>Nos dernières compositions</h2>
         </div>
-
-        <p className={styles.description}>
-          Nous postons régulièrement des compositions, issues de nos derniers arrivages, sur les réseaux sociaux.
-        </p>
       </div>
 
       <div className={styles.gridWrapper}>
