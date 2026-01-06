@@ -19,7 +19,7 @@
 
 .grid {
   display: grid;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   /* Default columns will be handled via inline style for configurability, 
      but we provide a fallback here */
   grid-template-columns: repeat(var(--grid-cols, 3), 1fr);
@@ -37,7 +37,6 @@
 
 .imageContainer {
   position: relative;
-  border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-md);
   background: rgba(255, 255, 255, 0.1);
@@ -100,7 +99,6 @@
   height: 100% !important;
   position: relative !important;
   object-fit: contain;
-  border-radius: var(--radius-md);
   box-shadow: var(--shadow-xl);
   transition: transform 0.1s ease-out;
 }
@@ -195,7 +193,7 @@
   
   .grid {
     grid-template-columns: 1fr;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
   }
 
   .gridWrapper {
