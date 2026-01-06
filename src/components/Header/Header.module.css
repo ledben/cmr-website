@@ -39,6 +39,8 @@
 }
 
 .socialLinks a {
+  display: flex;
+  align-items: center;
   color: var(--white);
   transition: color var(--transition-fast);
 }
@@ -159,6 +161,10 @@
     justify-content: center;
     gap: var(--space-md);
     font-size: 0.75rem;
+  }
+
+  .socialLinks {
+    gap: var(--space-md);
   }
   
   .contactLink span {
