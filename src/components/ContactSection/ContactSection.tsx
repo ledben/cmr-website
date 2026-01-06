@@ -1,4 +1,4 @@
-import OpeningHours from '../OpeningHours';
+import OpeningHours from './OpeningHours';
 import GoogleMapSection from '../GoogleMap';
 import styles from './ContactSection.module.css';
 
