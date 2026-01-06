@@ -18,6 +18,9 @@ const ClothingCarousel = ({ columns = 5 }: ClothingCarouselProps) => {
   const [isZoomed, setIsZoomed] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const [aspectRatio, setAspectRatio] = useState<number | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
+  const [lastPointerPos, setLastPointerPos] = useState({ x: 0, y: 0 });
 
   // Generate array of 38 image paths
   const images: ImageItem[] = Array.from({ length: 38 }, (_, i) => ({
@@ -35,12 +38,16 @@ const ClothingCarousel = ({ columns = 5 }: ClothingCarouselProps) => {
   const closeLightbox = () => {
     setSelectedImage(null);
     setIsZoomed(false);
+    setPanOffset({ x: 0, y: 0 });
     setAspectRatio(null);
     document.body.style.overflow = 'auto';
   };
 
   const toggleZoom = (e: React.MouseEvent) => {
     e.stopPropagation();
+    if (isZoomed) {
+      setPanOffset({ x: 0, y: 0 });
+    }
     setIsZoomed(!isZoomed);
   };
 
@@ -51,26 +58,54 @@ const ClothingCarousel = ({ columns = 5 }: ClothingCarouselProps) => {
     }
   };
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isZoomed) return;
-    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - left) / width) * 100;
-    const y = ((e.clientY - top) / height) * 100;
-    setMousePos({ x, y });
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!isZoomed || e.button === 2) return;
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+    setLastPointerPos({ x: e.clientX, y: e.clientY });
   };
 
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isZoomed || !isDragging) return;
+
+    const deltaX = e.clientX - lastPointerPos.x;
+    const deltaY = e.clientY - lastPointerPos.y;
+
+    setPanOffset(prev => ({
+      x: prev.x + deltaX,
+      y: prev.y + deltaY
+    }));
+    setLastPointerPos({ x: e.clientX, y: e.clientY });
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
     if (!isZoomed) return;
+    setIsDragging(true);
+    const touch = e.touches[0];
+    setLastPointerPos({ x: touch.clientX, y: touch.clientY });
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isZoomed || !isDragging) return;
 
     const touch = e.touches[0];
-    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
-    const x = ((touch.clientX - left) / width) * 100;
-    const y = ((touch.clientY - top) / height) * 100;
+    const deltaX = touch.clientX - lastPointerPos.x;
+    const deltaY = touch.clientY - lastPointerPos.y;
 
-    setMousePos({
-      x: Math.max(0, Math.min(100, x)),
-      y: Math.max(0, Math.min(100, y))
-    });
+    setPanOffset(prev => ({
+      x: prev.x + deltaX,
+      y: prev.y + deltaY
+    }));
+    setLastPointerPos({ x: touch.clientX, y: touch.clientY });
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
   };
 
   return (
@@ -153,11 +188,21 @@ const ClothingCarousel = ({ columns = 5 }: ClothingCarouselProps) => {
           </button>
           <div
             className={`${styles.lightboxImageContainer} ${isZoomed ? styles.zoomed : ''}`}
+            data-dragging={isDragging}
             onClick={toggleZoom}
+            onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onContextMenu={(e) => isZoomed && e.preventDefault()}
+            onDragStart={(e) => e.preventDefault()}
+            onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
             style={{
-              '--aspect-ratio': aspectRatio || 'auto'
+              '--aspect-ratio': aspectRatio || 'auto',
+              '--pan-x': `${panOffset.x}px`,
+              '--pan-y': `${panOffset.y}px`
             } as React.CSSProperties}
           >
             <Image
@@ -165,9 +210,9 @@ const ClothingCarousel = ({ columns = 5 }: ClothingCarouselProps) => {
               alt={selectedImage.alt}
               fill
               onLoad={handleImageLoad}
+              draggable={false}
               style={{
-                objectFit: 'contain',
-                transformOrigin: `${mousePos.x}% ${mousePos.y}%`
+                objectFit: 'contain'
               }}
               sizes="90vw"
               priority
