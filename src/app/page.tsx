@@ -2,7 +2,7 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import AboutSection from '@/components/AboutSection';
 import DepotSection from '@/components/DepotSection';
-import ClothingCarousel from '@/components/ClothingCarousel';
+import ArticleGrid from '@/components/ArticleGrid';
 import Testimonials from '@/components/Testimonials';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
@@ -15,7 +15,7 @@ export default function Home() {
         <Hero />
         <AboutSection />
         <DepotSection />
-        <ClothingCarousel />
+        <ArticleGrid />
         <Testimonials />
         <ContactSection />
       </main>

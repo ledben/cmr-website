@@ -2,18 +2,18 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import styles from './ClothingCarousel.module.css';
+import styles from './ArticleGrid.module.css';
 
 interface ImageItem {
   src: string;
   alt: string;
 }
 
-interface ClothingCarouselProps {
+interface ArticleGridProps {
   columns?: number;
 }
 
-const ClothingCarousel = ({ columns = 5 }: ClothingCarouselProps) => {
+const ArticleGrid = ({ columns = 5 }: ArticleGridProps) => {
   const [selectedImage, setSelectedImage] = useState<ImageItem | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
@@ -109,7 +109,7 @@ const ClothingCarousel = ({ columns = 5 }: ClothingCarouselProps) => {
   };
 
   return (
-    <section id="compositions" className={`section section-primary ${styles.carouselSection}`}>
+    <section id="compositions" className={`section section-primary ${styles.gridSection}`}>
       <div className="container">
         <div className="section-title">
           <h2>Nos dernières compositions</h2>
@@ -224,5 +224,5 @@ const ClothingCarousel = ({ columns = 5 }: ClothingCarouselProps) => {
   );
 };
 
-export default ClothingCarousel;
+export default ArticleGrid;
 
