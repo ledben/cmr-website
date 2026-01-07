@@ -12,8 +12,5 @@ export default function ArticleGridServer() {
 
   const imageCount = totalImages - (totalImages % columns);
 
-  console.log(totalImages);
-  console.log(imageCount);
-
   return <ArticleGrid totalImages={imageCount} columns={columns} />;
 }

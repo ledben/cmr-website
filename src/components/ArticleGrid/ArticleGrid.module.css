@@ -181,7 +181,8 @@
 
 @media (max-width: 1024px) {
   .grid {
-    grid-template-columns: repeat(min(var(--grid-cols, 3), 2), 1fr);
+    /* Maintain grid columns even on tablets */
+    grid-template-columns: repeat(var(--grid-cols, 3), 1fr);
   }
 }
 
@@ -192,7 +193,8 @@
   }
   
   .grid {
-    grid-template-columns: 1fr;
+    /* Maintain grid columns even on mobile as requested */
+    grid-template-columns: repeat(var(--grid-cols, 3), 1fr);
     gap: var(--space-xs);
   }
 
