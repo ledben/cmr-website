@@ -1,1 +1,1 @@
-﻿export { default } from './ArticleGrid';
+﻿export { default } from './ArticleGridServer';

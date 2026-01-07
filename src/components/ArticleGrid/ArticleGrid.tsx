@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './ArticleGrid.module.css';
 
@@ -11,9 +11,10 @@ interface ImageItem {
 
 interface ArticleGridProps {
   columns?: number;
+  totalImages?: number;
 }
 
-const ArticleGrid = ({ columns = 5 }: ArticleGridProps) => {
+const ArticleGrid = ({ columns = 5, totalImages = 0 }: ArticleGridProps) => {
   const [selectedImage, setSelectedImage] = useState<ImageItem | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
   const [aspectRatio, setAspectRatio] = useState<number | null>(null);
@@ -21,8 +22,20 @@ const ArticleGrid = ({ columns = 5 }: ArticleGridProps) => {
   const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
   const [lastPointerPos, setLastPointerPos] = useState({ x: 0, y: 0 });
 
-  // Generate array of 38 image paths
-  const images: ImageItem[] = Array.from({ length: 38 }, (_, i) => ({
+  // Handle body scroll locking
+  useEffect(() => {
+    if (selectedImage) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [selectedImage]);
+
+  // Generate array of image paths based on totalImages
+  const images: ImageItem[] = Array.from({ length: totalImages }, (_, i) => ({
     src: `/images/${i + 1}.jpg`,
     alt: `Composition vestimentaire ${i + 1}`
   }));
@@ -31,7 +44,6 @@ const ArticleGrid = ({ columns = 5 }: ArticleGridProps) => {
     setSelectedImage(image);
     setIsZoomed(false);
     setAspectRatio(null);
-    document.body.style.overflow = 'hidden';
   };
 
   const closeLightbox = () => {
@@ -39,7 +51,6 @@ const ArticleGrid = ({ columns = 5 }: ArticleGridProps) => {
     setIsZoomed(false);
     setPanOffset({ x: 0, y: 0 });
     setAspectRatio(null);
-    document.body.style.overflow = 'auto';
   };
 
   const toggleZoom = (e: React.MouseEvent) => {
