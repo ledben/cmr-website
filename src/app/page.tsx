@@ -7,6 +7,8 @@ import Testimonials from '@/components/Testimonials';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
+export const dynamic = 'force-static';
+
 export default function Home() {
   return (
     <>

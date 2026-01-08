@@ -2,6 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import ArticleGrid from './ArticleGrid';
 
+export const dynamic = 'force-static';
+
 export default function ArticleGridServer() {
 
   const imagesDir = path.join(process.cwd(), 'public', 'images');
