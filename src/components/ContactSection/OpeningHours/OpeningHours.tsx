@@ -1,5 +1,7 @@
 import styles from './OpeningHours.module.css';
 
+export const dynamic = 'force-dynamic';
+
 const OpeningHours = () => {
   const hours = [
     { day: 'Lundi', time: 'Fermé', closed: true },
