@@ -1,6 +1,7 @@
 import styles from './OpeningHours.module.css';
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 30;
 
 const OpeningHours = () => {
   const hours = [
