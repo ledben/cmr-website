@@ -38,6 +38,7 @@ const Header = () => {
     { href: '#depot', label: 'Déposer' },
     { href: '#compositions', label: 'Compositions' },
     { href: '#temoignages', label: 'Témoignages' },
+    { href: '#faq', label: 'FAQ' },
     { href: '#contact', label: 'Contact' },
   ];
 

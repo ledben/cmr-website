@@ -34,7 +34,7 @@ const FaqSection = () => {
   };
 
   return (
-    <section className={`section section-primary ${styles.faqSection}`}>
+    <section id="faq" className={`section section-primary ${styles.faqSection}`}>
       <div className={styles.container}>
         <h2 className={styles.title}>Questions Fréquentes</h2>
         <div className={styles.faqList}>
