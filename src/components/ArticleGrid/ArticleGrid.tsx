@@ -11,10 +11,10 @@ interface ImageItem {
 
 interface ArticleGridProps {
   columns?: number;
-  totalImages?: number;
+  imageNames?: string[];
 }
 
-const ArticleGrid = ({ columns = 5, totalImages = 0 }: ArticleGridProps) => {
+const ArticleGrid = ({ columns = 5, imageNames = [] }: ArticleGridProps) => {
   const [selectedImage, setSelectedImage] = useState<ImageItem | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
   const [aspectRatio, setAspectRatio] = useState<number | null>(null);
@@ -34,9 +34,9 @@ const ArticleGrid = ({ columns = 5, totalImages = 0 }: ArticleGridProps) => {
     };
   }, [selectedImage]);
 
-  // Generate array of image paths based on totalImages
-  const images: ImageItem[] = Array.from({ length: totalImages }, (_, i) => ({
-    src: `/images/${i + 1}.jpg`,
+  // Generate array of image paths based on imageNames
+  const images: ImageItem[] = imageNames.map((fileName, i) => ({
+    src: `/images/${fileName}`,
     alt: `Composition vestimentaire ${i + 1}`
   }));
 

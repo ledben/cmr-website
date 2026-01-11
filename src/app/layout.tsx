@@ -28,8 +28,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={inter.className}>
+      <head>
         <StructuredData />
+      </head>
+      <body className={inter.className}>
         {children}
       </body>
     </html>

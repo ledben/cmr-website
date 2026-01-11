@@ -21,7 +21,7 @@ const AboutSection = () => {
         </svg>
       ),
       title: 'On y trouve quoi ?',
-      description: 'Des vêtements, bien sûr, mais également des chaussures, des sacs à main, des bijoux, des foulards, …'
+      description: 'Des vêtements, bien sûr, mais également des chaussures, des sacs à main, des bijoux, des lunettes, des foulards, …'
     },
     {
       icon: (
@@ -42,7 +42,7 @@ const AboutSection = () => {
         </svg>
       ),
       title: 'Quelles marques ?',
-      description: 'Retrouvez vos marques préférées comme IKKS, Zadig & Voltaire, Promod, Tommy Hilfiger, Zara, New Balance, Comptoir des Cotonniers, Sézane, et bien d\'autres.'
+      description: 'Retrouvez vos marques préférées comme Stella Forest, Zadig & Voltaire, Promod, Tommy Hilfiger, Zara, New Balance, Comptoir des Cotonniers, Sézane, et bien d\'autres.'
     }
   ];
 

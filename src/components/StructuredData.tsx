@@ -5,8 +5,8 @@ const StructuredData = () => {
     '@context': 'https://schema.org',
     '@type': 'ClothingStore',
     name: "Dress'in",
-    url: 'https://www.dress-in-cestas.fr',
-    logo: 'https://www.dress-in-cestas.fr/logo.png',
+    url: 'https://dressin-cestas.com',
+    logo: 'https://dressin-cestas.com/logo.png',
     description: 'Votre dépôt-vente de référence à Cestas, près de Bordeaux. Découvrez notre sélection de vêtements, chaussures et accessoires de seconde main pour femme, homme et enfant.',
     address: {
       '@type': 'PostalAddress',

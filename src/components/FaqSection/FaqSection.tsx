@@ -6,11 +6,15 @@ import styles from './FaqSection.module.css';
 const faqData = [
   {
     question: "Quels types d'articles acceptez-vous en dépôt ?",
-    answer: "Nous acceptons les vêtements pour femmes, hommes et enfants, ainsi que les chaussures, sacs à main et accessoires de mode. Tous les articles doivent être en excellent état, propres, et de saison."
+    answer: "Nous acceptons les vêtements pour femmes, hommes et enfants, ainsi que les chaussures, sacs à main et accessoires de mode. Tous les articles doivent être récents, en excellent état, propres, de saison, lavés repassés et mis sur cintre."
   },
   {
     question: "Comment fonctionne le processus de dépôt-vente ?",
-    answer: "Vous pouvez déposer vos articles sans rendez-vous pendant nos heures d'ouverture. Nous effectuons une sélection ensemble, puis nous fixons les prix. Vos articles sont mis en vente pour une durée de deux mois. Vous percevez un pourcentage sur les ventes réalisées."
+    answer: "Il est impératif de prendre rendez-vous avant de vous présenter vos articles. Nous effectuons une sélection ensemble, puis nous fixons les prix. Vos articles sont mis en vente pour une durée de deux mois. Vous percevez 50% sur les ventes réalisées."
+  },
+  {
+    question: "Comment prendre rendez-vous ?",
+    answer: "Par téléphone ou par SMS au 07 48 45 88 48 (pas de message vocaux)"
   },
   {
     question: "Quels sont vos horaires d'ouverture ?",
