@@ -132,7 +132,7 @@ const ArticleGrid = ({ columns = 5, totalImages = 0 }: ArticleGridProps) => {
           style={{ '--grid-cols': columns } as React.CSSProperties}
         >
           {images.map((image, index) => (
-            <div
+            <article
               key={index}
               className={styles.gridItem}
               onClick={() => openLightbox(image)}
@@ -146,7 +146,7 @@ const ArticleGrid = ({ columns = 5, totalImages = 0 }: ArticleGridProps) => {
                   style={{ objectFit: 'cover' }}
                 />
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

@@ -4,6 +4,7 @@ import AboutSection from '@/components/AboutSection';
 import DepotSection from '@/components/DepotSection';
 import ArticleGrid from '@/components/ArticleGrid';
 import Testimonials from '@/components/Testimonials';
+import FaqSection from '@/components/FaqSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
@@ -19,6 +20,7 @@ export default function Home() {
         <DepotSection />
         <ArticleGrid />
         <Testimonials />
+        <FaqSection />
         <ContactSection />
       </main>
       <Footer />
