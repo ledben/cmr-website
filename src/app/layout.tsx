@@ -15,74 +15,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.dressin-cestas.com'),
-  title: "Dress'in Dépôt-vente | Mode Seconde Main à Cestas, Bordeaux - Gironde",
-  description: "Dress'in est un dépôt-vente de vêtements, chaussures et accessoires chics et tendance à Cestas, près de Bordeaux en Gironde. Découvrez la mode responsable et donnez une seconde vie à vos vêtements.",
-  keywords: [
-    "dépôt-vente",
-    "seconde main",
-    "vêtements",
-    "accessoires",
-    "chaussures",
-    "magasin",
-    "boutique",
-    "Cestas",
-    "Bordeaux",
-    "Gironde",
-    "mode responsable",
-    "éco-responsable",
-    "friperie",
-    "vêtements d'occasion",
-    "mode durable"
-  ],
-  authors: [{ name: "Dress'in Cestas" }],
-  creator: "Dress'in Cestas",
-  publisher: "Dress'in Cestas",
-  formatDetection: {
-    email: true,
-    telephone: true,
-    address: true,
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'fr_FR',
-    url: 'https://www.dressin-cestas.com',
-    siteName: "Dress'in - Comptoir de la Mode Responsable",
-    title: "Dress'in Dépôt-vente | Mode Seconde Main à Cestas, Bordeaux",
-    description: "Dress'in est un dépôt-vente de vêtements, chaussures et accessoires chics et tendance à Cestas, près de Bordeaux. Découvrez la mode responsable!",
-    images: [
-      {
-        url: '/logo.png',
-        width: 1200,
-        height: 630,
-        alt: "Dress'in - Comptoir de la Mode Responsable",
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: "Dress'in Dépôt-vente | Mode Seconde Main à Cestas",
-    description: "Dépôt-vente de vêtements chics et tendance à Cestas, Gironde. Mode responsable et seconde main.",
-    images: ['/logo.png'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  alternates: {
-    canonical: 'https://www.dressin-cestas.com',
-  },
-  icons: {
-    icon: '/logo-d.svg',
-    apple: '/logo-d.svg',
-  },
+  title: "Dress'in - Dépôt-Vente & Friperie à Cestas | Vêtements & Chaussures",
+  description: "Votre dépôt-vente de référence à Cestas, près de Bordeaux. Découvrez notre sélection de vêtements, chaussures et accessoires de seconde main pour femme, homme et enfant.",
+  keywords: "dépôt-vente Gironde, friperie Cestas, vêtements occasion Cestas, chaussures seconde main, mode durable, magasin vêtements Cestas",
 };
 
 export default function RootLayout({
@@ -90,121 +25,57 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ClothingStore',
+    name: "Dress'in",
+    url: 'https://www.dress-in-cestas.fr',
+    logo: 'https://www.dress-in-cestas.fr/logo.png',
+    description: 'Votre dépôt-vente de référence à Cestas, près de Bordeaux. Découvrez notre sélection de vêtements, chaussures et accessoires de seconde main pour femme, homme et enfant.',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '22 place du Chanoine Patry',
+      addressLocality: 'Cestas',
+      postalCode: '33610',
+      addressRegion: 'Gironde',
+      addressCountry: 'FR',
+    },
+    telephone: '+33748458848',
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '10:15',
+        closes: '12:15',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '14:45',
+        closes: '19:00',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: 'Saturday',
+        opens: '10:15',
+        closes: '12:15',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: 'Saturday',
+        opens: '15:00',
+        closes: '19:00',
+      },
+    ],
+  };
+
   return (
     <html lang="fr">
-      <head>
+      <body className={inter.className}>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "name": "Dress'in - Comptoir de la Mode Responsable",
-              "image": "https://www.dressin-cestas.com/logo.png",
-              "@id": "https://www.dressin-cestas.com",
-              "url": "https://www.dressin-cestas.com",
-              "telephone": "+33748458848",
-              "email": "nathalie@dressin-cestas.com",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "22 place Chanoine Patry",
-                "addressLocality": "Cestas",
-                "postalCode": "33610",
-                "addressRegion": "Gironde",
-                "addressCountry": "FR"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": 44.7397,
-                "longitude": -0.6819
-              },
-              "openingHoursSpecification": [
-                {
-                  "@type": "OpeningHoursSpecification",
-                  "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
-                  "opens": "10:15",
-                  "closes": "12:15"
-                },
-                {
-                  "@type": "OpeningHoursSpecification",
-                  "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
-                  "opens": "14:45",
-                  "closes": "19:00"
-                },
-                {
-                  "@type": "OpeningHoursSpecification",
-                  "dayOfWeek": "Saturday",
-                  "opens": "10:15",
-                  "closes": "12:15"
-                },
-                {
-                  "@type": "OpeningHoursSpecification",
-                  "dayOfWeek": "Saturday",
-                  "opens": "15:00",
-                  "closes": "19:00"
-                }
-              ],
-              "sameAs": [
-                "https://www.instagram.com/dressin_cestas/",
-                "https://www.facebook.com/dressin_cestas-104151251342418/"
-              ],
-              "priceRange": "€€",
-              "description": "Dépôt-vente de vêtements, chaussures et accessoires chics et tendance à Cestas, près de Bordeaux en Gironde. Mode responsable et seconde main.",
-              "areaServed": {
-                "@type": "GeoCircle",
-                "geoMidpoint": {
-                  "@type": "GeoCoordinates",
-                  "latitude": 44.7397,
-                  "longitude": -0.6819
-                },
-                "geoRadius": "50000"
-              },
-              "hasOfferCatalog": {
-                "@type": "OfferCatalog",
-                "name": "Vêtements et accessoires de seconde main",
-                "itemListElement": [
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Product",
-                      "name": "Vêtements femme"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Product",
-                      "name": "Vêtements homme"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Product",
-                      "name": "Vêtements enfant"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Product",
-                      "name": "Chaussures"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Product",
-                      "name": "Accessoires"
-                    }
-                  }
-                ]
-              }
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-      </head>
-      <body className={`${inter.variable} ${playfair.variable}`}>
         {children}
       </body>
     </html>

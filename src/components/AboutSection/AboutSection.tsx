@@ -9,7 +9,7 @@ const AboutSection = () => {
           <circle cx="12" cy="10" r="3" />
         </svg>
       ),
-      title: 'Où ?',
+      title: 'Où nous trouver ?',
       description: "Dress'in se situe dans le centre de Cestas. Nos clients viennent des quatre coins de la Gironde."
     },
     {
@@ -21,7 +21,7 @@ const AboutSection = () => {
         </svg>
       ),
       title: 'On y trouve quoi ?',
-      description: 'Des vêtements, bien sûr, mais également des chaussures, des sacs, des bijoux, des foulards, …'
+      description: 'Des vêtements, bien sûr, mais également des chaussures, des sacs à main, des bijoux, des foulards, …'
     },
     {
       icon: (
@@ -33,7 +33,7 @@ const AboutSection = () => {
         </svg>
       ),
       title: 'Pour qui ?',
-      description: 'Nous proposons des articles pour femmes ainsi que pour les hommes et les enfants de plus de 8 ans.'
+      description: 'Nous proposons des articles de seconde main pour femmes, hommes et enfants de plus de 8 ans. Toute la famille peut trouver son bonheur !'
     },
     {
       icon: (
@@ -42,7 +42,7 @@ const AboutSection = () => {
         </svg>
       ),
       title: 'Quelles marques ?',
-      description: 'IKKS, Zadig&Voltaire, Promod, Tommy Hilfiger, Zara, New balance, Comptoir des cotonniers, Sezane, …'
+      description: 'Retrouvez vos marques préférées comme IKKS, Zadig & Voltaire, Promod, Tommy Hilfiger, Zara, New Balance, Comptoir des Cotonniers, Sézane, et bien d\'autres.'
     }
   ];
 
@@ -50,12 +50,12 @@ const AboutSection = () => {
     <section id="apropos" className={`section section-primary ${styles.about}`}>
       <div className="container">
         <div className="section-title">
-          <h2>C&apos;est quoi, Dress&apos;in ?</h2>
+          <h2>Que proposons-nous ?</h2>
         </div>
 
         <div className={styles.intro}>
           <p className={styles.lead}>
-            Dress&apos;in est un dépôt-vente de vêtements, chaussures et accessoires chics et tendance.
+            Bienvenue chez Dress&apos;in, votre dépôt-vente à Cestas spécialisé dans les vêtements, chaussures et accessoires de seconde main. Nous proposons une sélection chic et tendance pour une mode plus durable.
           </p>
         </div>
 
