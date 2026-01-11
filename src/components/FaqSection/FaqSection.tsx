@@ -14,7 +14,7 @@ const faqData = [
   },
   {
     question: "Comment prendre rendez-vous ?",
-    answer: "Par téléphone ou par SMS au 07 48 45 88 48 (pas de message vocaux)"
+    answer: "Par téléphone ou par SMS au 07 48 45 88 48 (pas de message vocal)"
   },
   {
     question: "Quels sont vos horaires d'ouverture ?",
