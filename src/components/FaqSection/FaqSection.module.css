@@ -1,7 +1,7 @@
 /* src/components/FaqSection/FaqSection.module.css */
 .faqSection {
   padding: var(--space-4xl) 0;
-  background: var(--off-white);
+  /* background removed to use section-primary */
 }
 
 .container {
@@ -15,11 +15,11 @@
   margin-bottom: var(--space-3xl);
   font-size: clamp(2rem, 5vw, 2.5rem);
   font-family: var(--font-display);
-  color: var(--gray-800);
+  /* color handles by section-primary */
 }
 
 .faqItem {
-  border-bottom: 1px solid var(--gray-200);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .faqQuestion {
@@ -30,7 +30,7 @@
   padding: var(--space-lg) 0;
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--gray-700);
+  color: inherit;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -39,7 +39,7 @@
 }
 
 .faqQuestion:hover {
-  color: var(--primary);
+  color: var(--accent);
 }
 
 .faqAnswer {
@@ -51,7 +51,7 @@
 .faqAnswer p {
   margin: 0;
   padding-bottom: var(--space-xl);
-  color: var(--gray-600);
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.7;
 }
 
@@ -62,7 +62,7 @@
 .icon {
   transition: transform 0.3s ease;
   font-size: 1.5rem;
-  color: var(--primary);
+  color: var(--white);
 }
 
 .icon.open {
