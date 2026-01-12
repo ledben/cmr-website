@@ -1,7 +1,6 @@
-import styles from './OpeningHours.module.css';
+'use client';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 30;
+import styles from './OpeningHours.module.css';
 
 const OpeningHours = () => {
   const hours = [
@@ -14,9 +13,7 @@ const OpeningHours = () => {
     { day: 'Dimanche', time: 'Fermé', closed: true },
   ];
 
-  // Get current day of week (0 = Sunday, 1 = Monday, etc.)
   const today = new Date().getDay();
-  // Convert to our array index (0 = Lundi in our array)
   const todayIndex = today === 0 ? 6 : today - 1;
 
   return (
