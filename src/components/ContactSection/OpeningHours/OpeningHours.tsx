@@ -13,7 +13,9 @@ const OpeningHours = () => {
     { day: 'Dimanche', time: 'Fermé', closed: true },
   ];
 
-  const today = new Date().getDay();
+  const now = new Date();
+  console.log("now !!!!!", now);
+  const today = now.getDay();
   const todayIndex = today === 0 ? 6 : today - 1;
 
   return (
