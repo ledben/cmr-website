@@ -132,6 +132,10 @@
   .feature span {
     display: none;
   }
-  
 
+  .backgroundImage {
+    object-position: bottom;
+    transform: scale(1.3);
+    transform-origin: bottom center;
+  }
 }
