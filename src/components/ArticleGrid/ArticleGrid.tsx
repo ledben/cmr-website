@@ -35,10 +35,21 @@ const ArticleGrid = ({ columns = 5, imageNames = [] }: ArticleGridProps) => {
   }, [selectedImage]);
 
   // Generate array of image paths based on imageNames
-  const images: ImageItem[] = imageNames.map((fileName, i) => ({
-    src: `/images/${fileName}`,
-    alt: `Composition vestimentaire ${i + 1}`
-  }));
+  const images: ImageItem[] = imageNames.map((fileName, i) => {
+    // Extract a cleaner name for SEO from filename if possible
+    // e.g., "robe-ete-bleue.jpg" -> "Robe ete bleue"
+    const cleanName = fileName
+      .replace(/\.[^/.]+$/, "") // remove extension
+      .replace(/[-_]/g, " ")    // replace - and _ with space
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+
+    return {
+      src: `/images/${fileName}`,
+      alt: `${cleanName}`
+    };
+  });
 
   const openLightbox = (image: ImageItem) => {
     setSelectedImage(image);
@@ -142,8 +153,14 @@ const ArticleGrid = ({ columns = 5, imageNames = [] }: ArticleGridProps) => {
                   src={image.src}
                   alt={image.alt}
                   fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  // The grid is responsive and uses var(--grid-cols)
+                  // On desktop, the max-width is 1800px.
+                  sizes={`(max-width: 1800px) ${Math.floor(100 / columns)}vw, ${Math.floor(1800 / columns)}px`}
                   style={{ objectFit: 'cover' }}
+                  // Load first row with priority for better LCP
+                  priority={index < columns}
+                  // Standard loading for others
+                  loading={index < columns ? undefined : 'lazy'}
                 />
               </div>
             </article>
