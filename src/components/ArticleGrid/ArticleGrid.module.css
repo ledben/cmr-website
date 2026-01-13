@@ -142,6 +142,61 @@
   to { opacity: 1; }
 }
 
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: var(--radius-full);
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  z-index: 10000;
+  backdrop-filter: blur(5px);
+}
+
+.navButton:hover {
+  background: var(--white);
+  color: var(--black);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.navButton[data-direction="prev"] {
+  left: var(--space-xl);
+}
+
+.navButton[data-direction="next"] {
+  right: var(--space-xl);
+}
+
+/* Hide navigation on mobile if it overlays too much, 
+   or adjust size */
+@media (max-width: 768px) {
+  .navButton {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .navButton[data-direction="prev"] {
+    left: var(--space-md);
+  }
+
+  .navButton[data-direction="next"] {
+    right: var(--space-md);
+  }
+
+  .closeButton {
+    top: var(--space-md) !important;
+    right: var(--space-md) !important;
+  }
+}
+
 /* Social CTA */
 .socialCta {
   text-align: center;

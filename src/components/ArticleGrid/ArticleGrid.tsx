@@ -15,24 +15,33 @@ interface ArticleGridProps {
 }
 
 const ArticleGrid = ({ columns = 5, imageNames = [] }: ArticleGridProps) => {
-  const [selectedImage, setSelectedImage] = useState<ImageItem | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
   const [aspectRatio, setAspectRatio] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [panOffset, setPanOffset] = useState({ x: 0, y: 0 });
   const [lastPointerPos, setLastPointerPos] = useState({ x: 0, y: 0 });
 
-  // Handle body scroll locking
+  // Handle body scroll locking and keyboard navigation
   useEffect(() => {
-    if (selectedImage) {
+    if (selectedIndex !== null) {
       document.body.style.overflow = 'hidden';
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'ArrowRight') goToNext();
+        if (e.key === 'ArrowLeft') goToPrevious();
+        if (e.key === 'Escape') closeLightbox();
+      };
+
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        window.removeEventListener('keydown', handleKeyDown);
+        document.body.style.overflow = 'auto';
+      };
     } else {
       document.body.style.overflow = 'auto';
     }
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [selectedImage]);
+  }, [selectedIndex]);
 
   // Generate array of image paths based on imageNames
   const images: ImageItem[] = imageNames.map((fileName, i) => {
@@ -51,17 +60,31 @@ const ArticleGrid = ({ columns = 5, imageNames = [] }: ArticleGridProps) => {
     };
   });
 
-  const openLightbox = (image: ImageItem) => {
-    setSelectedImage(image);
+  const openLightbox = (index: number) => {
+    setSelectedIndex(index);
     setIsZoomed(false);
     setAspectRatio(null);
   };
 
   const closeLightbox = () => {
-    setSelectedImage(null);
+    setSelectedIndex(null);
     setIsZoomed(false);
     setPanOffset({ x: 0, y: 0 });
     setAspectRatio(null);
+  };
+
+  const goToNext = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setSelectedIndex((prev) => (prev === null ? null : (prev + 1) % images.length));
+    setIsZoomed(false);
+    setPanOffset({ x: 0, y: 0 });
+  };
+
+  const goToPrevious = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setSelectedIndex((prev) => (prev === null ? null : (prev - 1 + images.length) % images.length));
+    setIsZoomed(false);
+    setPanOffset({ x: 0, y: 0 });
   };
 
   const toggleZoom = (e: React.MouseEvent) => {
@@ -146,7 +169,7 @@ const ArticleGrid = ({ columns = 5, imageNames = [] }: ArticleGridProps) => {
             <article
               key={index}
               className={styles.gridItem}
-              onClick={() => openLightbox(image)}
+              onClick={() => openLightbox(index)}
             >
               <div className={styles.imageContainer}>
                 <Image
@@ -201,14 +224,27 @@ const ArticleGrid = ({ columns = 5, imageNames = [] }: ArticleGridProps) => {
       </div>
 
       {/* Lightbox Overlay */}
-      {selectedImage && (
+      {selectedIndex !== null && (
         <div className={styles.lightbox} onClick={closeLightbox}>
-          <button className={styles.closeButton} onClick={closeLightbox}>
+          <button className={styles.closeButton} onClick={closeLightbox} aria-label="Fermer">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="18" y1="6" x2="6" y2="18" />
               <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </button>
+
+          <button className={styles.navButton} data-direction="prev" onClick={goToPrevious} aria-label="Image précédente">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+
+          <button className={styles.navButton} data-direction="next" onClick={goToNext} aria-label="Image suivante">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+
           <div
             className={`${styles.lightboxImageContainer} ${isZoomed ? styles.zoomed : ''}`}
             data-dragging={isDragging}
@@ -229,8 +265,8 @@ const ArticleGrid = ({ columns = 5, imageNames = [] }: ArticleGridProps) => {
             } as React.CSSProperties}
           >
             <Image
-              src={selectedImage.src}
-              alt={selectedImage.alt}
+              src={images[selectedIndex].src}
+              alt={images[selectedIndex].alt}
               fill
               onLoad={handleImageLoad}
               draggable={false}
