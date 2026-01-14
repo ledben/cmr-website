@@ -12,7 +12,7 @@
 .infoColumn {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3xl);
+  gap: var(--space-xl);
 }
 
 .hoursColumn {
