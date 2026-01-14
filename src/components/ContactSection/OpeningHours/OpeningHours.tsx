@@ -1,22 +1,26 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import styles from './OpeningHours.module.css';
 
-const OpeningHours = () => {
-  const hours = [
-    { day: 'Lundi', time: 'Fermé', closed: true },
-    { day: 'Mardi', time: '10:15 – 12:15, 14:45 – 19:00', closed: false },
-    { day: 'Mercredi', time: '10:15 – 12:15, 14:45 – 19:00', closed: false },
-    { day: 'Jeudi', time: '10:15 – 12:15, 14:45 – 19:00', closed: false },
-    { day: 'Vendredi', time: '10:15 – 12:15, 14:45 – 19:00', closed: false },
-    { day: 'Samedi', time: '10:15 – 12:15, 15:00 – 19:00', closed: false },
-    { day: 'Dimanche', time: 'Fermé', closed: true },
-  ];
+const hours = [
+  { day: 'Lundi', time: 'Fermé', closed: true },
+  { day: 'Mardi', time: '10:15 – 12:15, 14:45 – 19:00', closed: false },
+  { day: 'Mercredi', time: '10:15 – 12:15, 14:45 – 19:00', closed: false },
+  { day: 'Jeudi', time: '10:15 – 12:15, 14:45 – 19:00', closed: false },
+  { day: 'Vendredi', time: '10:15 – 12:15, 14:45 – 19:00', closed: false },
+  { day: 'Samedi', time: '10:15 – 12:15, 15:00 – 19:00', closed: false },
+  { day: 'Dimanche', time: 'Fermé', closed: true },
+];
 
-  const now = new Date();
-  console.log("now !!!!!", now);
-  const today = now.getDay();
-  const todayIndex = today === 0 ? 6 : today - 1;
+const OpeningHours = () => {
+  const [todayIndex, setTodayIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    const today = new Date().getDay();
+    const index = today === 0 ? 6 : today - 1;
+    setTodayIndex(index);
+  }, []);
 
   return (
     <div className={styles.hours}>
@@ -30,8 +34,7 @@ const OpeningHours = () => {
 
       <ul className={styles.list}>
         {hours.map((item, index) => (
-          <li
-            key={item.day}
+          <li key={item.day}
             className={`${styles.item} ${item.closed ? styles.closed : ''} ${index === todayIndex ? styles.today : ''}`}
           >
             <span className={styles.day}>{item.day}</span>
