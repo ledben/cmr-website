@@ -7,7 +7,7 @@ const StructuredData = () => {
     name: "Dress'in",
     url: 'https://dressin-cestas.com',
     logo: 'https://dressin-cestas.com/logo.png',
-    description: 'Votre dépôt-vente de référence à Cestas, près de Bordeaux. Découvrez notre sélection de vêtements, chaussures et accessoires de seconde main pour femme, homme et enfant.',
+    description: "Boutique de mode femme et dépôt-vente à Cestas. Vêtements, chaussures et accessoires de seconde main de marque.",
     address: {
       '@type': 'PostalAddress',
       streetAddress: '22 place du Chanoine Patry',

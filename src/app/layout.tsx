@@ -16,9 +16,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Dress'in - Dépôt-Vente & Friperie à Cestas | Vêtements & Chaussures",
-  description: "Votre dépôt-vente de référence à Cestas, près de Bordeaux. Découvrez notre sélection de vêtements, chaussures et accessoires de seconde main pour femme, homme et enfant.",
-  keywords: "dépôt-vente Gironde, friperie Cestas, vêtements occasion Cestas, chaussures seconde main, mode durable, magasin vêtements Cestas",
+  title: "Dress'in | Boutique de Vêtements Femme & Dépôt-Vente à Cestas",
+  description: "Découvrez Dress'in, votre boutique de mode femme à Cestas. Vêtements, chaussures et accessoires de marque en seconde main. Dépôt-vente chic pour une garde-robe durable.",
+  keywords: "vêtements femme Cestas, boutique mode femme Gironde, dépôt-vente femme, friperie de luxe, vêtements occasion marque, chaussures femme seconde main, mode éco-responsable",
 };
 
 export default function RootLayout({

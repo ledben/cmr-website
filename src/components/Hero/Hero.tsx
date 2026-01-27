@@ -16,6 +16,7 @@ const Hero = () => {
       </div>
 
       <div className={styles.logoWrapper}>
+        <h1 className="sr-only">Dress&apos;in - Boutique de Vêtements Femme & Dépôt-Vente à Cestas</h1>
         <Image
           src="/logo.png"
           alt="Logo Dress'in"

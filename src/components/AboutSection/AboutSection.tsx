@@ -20,8 +20,8 @@ const AboutSection = () => {
           <path d="M16 10a4 4 0 0 1-8 0" />
         </svg>
       ),
-      title: 'On y trouve quoi ?',
-      description: 'Des vêtements, bien sûr, mais également des chaussures, des sacs à main, des bijoux, des lunettes, des foulards, …'
+      title: 'Notre collection femme',
+      description: 'Retrouvez un large choix de vêtements pour femmes : robes, vestes, hauts, pantalons, mais aussi des chaussures de marque, sacs à main et accessoires.'
     },
     {
       icon: (
@@ -55,7 +55,7 @@ const AboutSection = () => {
 
         <div className={styles.intro}>
           <p className={styles.lead}>
-            Bienvenue chez Dress&apos;in, votre dépôt-vente à Cestas spécialisé dans les vêtements, chaussures et accessoires de seconde main. Nous proposons une sélection chic et tendance pour une mode plus durable.
+            Bienvenue chez Dress&apos;in, votre boutique de mode et dépôt-vente à Cestas. Nous sommes spécialisés dans les vêtements pour femmes, chaussures et accessoires de seconde main, offrant une sélection chic et tendance pour une garde-robe plus durable.
           </p>
         </div>
 
