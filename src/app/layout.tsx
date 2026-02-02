@@ -16,12 +16,16 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://dressin-cestas.com'),
   title: "Dress'in | Boutique de Vêtements Femme & Dépôt-Vente à Cestas",
   description: "Découvrez Dress'in, votre boutique de mode femme à Cestas. Vêtements, chaussures et accessoires de marque en seconde main. Dépôt-vente chic pour une garde-robe durable.",
   keywords: "vêtements femme Cestas, boutique mode femme Gironde, dépôt-vente femme, friperie de luxe, vêtements occasion marque, chaussures femme seconde main, mode éco-responsable",
   icons: {
     icon: "/icon.svg",
     apple: "/icon.svg",
+  },
+  alternates: {
+    canonical: '/',
   },
 };
 
