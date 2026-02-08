@@ -10,7 +10,7 @@ import Footer from '@/components/Footer';
 
 export const dynamic = 'force-static';
 
-export default function Home() {
+export default async function Home() {
   return (
     <>
       <Header />
