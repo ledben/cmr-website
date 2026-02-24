@@ -15,6 +15,7 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
+// https://medium.com/@amirjld/10-tiny-next-js-tricks-youll-wish-you-knew-earlier-5b4a671a24d6
 export const metadata: Metadata = {
   metadataBase: new URL('https://dressin-cestas.com'),
   title: "Dress'in | Boutique de Vêtements Femme & Dépôt-Vente à Cestas",
