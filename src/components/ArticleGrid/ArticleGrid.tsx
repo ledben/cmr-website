@@ -1,20 +1,27 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import styles from './ArticleGrid.module.css';
 
 interface ImageItem {
   src: string;
   alt: string;
+  description: string[];
 }
+
+export type CaptionFile = {
+  postId: string,
+  description: string[]
+}[];
 
 interface ArticleGridProps {
   columns?: number;
-  imageNames?: string[];
+  imagesPaths: string[];
+  captionData: CaptionFile;
 }
 
-const ArticleGrid = ({ columns = 5, imageNames = [] }: ArticleGridProps) => {
+const ArticleGrid = ({ columns = 5, imagesPaths, captionData }: ArticleGridProps) => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [isZoomed, setIsZoomed] = useState(false);
   const [aspectRatio, setAspectRatio] = useState<number | null>(null);
@@ -44,19 +51,13 @@ const ArticleGrid = ({ columns = 5, imageNames = [] }: ArticleGridProps) => {
   }, [selectedIndex]);
 
   // Generate array of image paths based on imageNames
-  const images: ImageItem[] = imageNames.map((fileName, i) => {
-    // Extract a cleaner name for SEO from filename if possible
-    // e.g., "robe-ete-bleue.jpg" -> "Robe ete bleue"
-    const cleanName = fileName
-      .replace(/\.[^/.]+$/, "") // remove extension
-      .replace(/[-_]/g, " ")    // replace - and _ with space
-      .split(' ')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
-
+  const images: ImageItem[] = imagesPaths.map((fileName) => {
+    const postId = fileName.split('__').pop()?.replace('.jpg', '') || '';
+    const description = captionData.find(data => data.postId === postId)?.description || [];
     return {
       src: `/images/${fileName}`,
-      alt: `${cleanName}`
+      alt: description.length > 0 ? description[0] : fileName,
+      description: description
     };
   });
 
@@ -186,6 +187,11 @@ const ArticleGrid = ({ columns = 5, imageNames = [] }: ArticleGridProps) => {
                   loading={index < columns ? undefined : 'lazy'}
                 />
               </div>
+              <div className="sr-only">
+                {image.description.map((text, i) => (
+                  <p key={i}>{text}</p>
+                ))}
+              </div>
             </article>
           ))}
         </div>
@@ -277,6 +283,14 @@ const ArticleGrid = ({ columns = 5, imageNames = [] }: ArticleGridProps) => {
               priority
             />
           </div>
+
+          {images[selectedIndex].description.length > 0 && (
+            <div className={styles.lightboxDescription} onClick={(e) => e.stopPropagation()}>
+              {images[selectedIndex].description.map((text, i) => (
+                <p key={i}>{text}</p>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </section>
