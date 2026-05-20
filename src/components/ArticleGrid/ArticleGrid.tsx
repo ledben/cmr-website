@@ -8,11 +8,13 @@ interface ImageItem {
   src: string;
   alt: string;
   description: string[];
+  timestamp: number;
 }
 
 export type CaptionFile = {
   postId: string,
   description: string[]
+  timestamp: string
 }[];
 
 interface ArticleGridProps {
@@ -53,13 +55,15 @@ const ArticleGrid = ({ columns = 5, imagesPaths, captionData }: ArticleGridProps
   // Generate array of image paths based on imageNames
   const images: ImageItem[] = imagesPaths.map((fileName) => {
     const postId = fileName.split('__').pop()?.replace('.jpg', '') || '';
-    const description = captionData.find(data => data.postId === postId)?.description || [];
+    const data = captionData.find(data => data.postId === postId);
+    const description = data?.description || [];
     return {
       src: `/images/${fileName}`,
       alt: description.length > 0 ? description[0] : fileName,
-      description: description
+      description: description,
+      timestamp: new Date(data?.timestamp || 0).getTime()
     };
-  });
+  }).sort((a, b) => b.timestamp - a.timestamp);
 
   const openLightbox = (index: number) => {
     setSelectedIndex(index);
